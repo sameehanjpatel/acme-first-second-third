@@ -1,0 +1,108 @@
+<html>
+    <head>
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200&display=swap" rel="stylesheet">
+        <link href = "syle.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class = "headline">
+        <h1>Acme: First, Second, Third</h1>
+        </div>
+        <div class = "panels">
+            <div class = "first">
+            <button class="null"><</button>
+            <button>></button>
+            <h3>FIRST</h3>
+            <ul id = "first">
+            
+            </ul>
+            </div>
+
+            <div class = "second">
+            <button><</button>
+            <button>></button>
+            <h3>SECOND</h3>
+            <ul id="second">
+            
+            </ul>
+
+            </div>
+            <div class = "third"> 
+            <button><</button>
+            <button class="null">></button>
+            <h3>THIRD</h3>
+            <ul id="third">
+            </ul>
+        </div>
+
+        <script>
+            const panels = document.querySelector(".panels");
+            const firstPanel = document.querySelector('#first');
+            const secondPanel = document.querySelector('#second');
+            const thirdPanel = document.querySelector('#third');
+            
+            const users = [
+                {id:1, name: "moe", slot:'first', selected: false},
+                {id:2, name: "larry", slot:'second', selected: false},
+                {id:3, name:'curly', slot:'third', selected: false},
+                {id:4, name:'lucy', slot:'third', selected:true},
+            ];
+
+        
+           
+            panels.addEventListener('click', (ev) => {
+                  if(ev.target.className === "true"){
+                     ev.target.className === "false"
+                       console.log(ev.target.className)
+                  }
+                    render();});
+             
+                    
+            
+            const render = () => {
+                let html1 ="";
+                let html2="";
+                let html3="";
+                users.map(user => {
+                    if(user.slot === "first"){
+                        html1+= `<li class=${user.selected}>${user.name}</li>`
+                    }
+                    else if (user.slot === "second") {
+                        html2 += `<li class=${user.selected}>${user.name}</li>`
+                    } else if (user.slot === "third") {
+                        html3 += `<li class=${user.selected}>${user.name}</li>`
+                    }
+                })
+
+                firstPanel.innerHTML = html1
+                secondPanel.innerHTML = html2
+                thirdPanel.innerHTML = html3
+            }
+
+            render();
+        </script>
+
+    </body>
+</html>
+
+    // <!-- Looping independantly didn't work - once it hits return it doesn't continue to loop
+    // const render = () => {
+    // console.log("I'm working");
+    // const html = users.map(user => {
+    // if (user.slot === "first"){
+    // console.log("loop1");
+    // return `<li>${user.name}</li>`}}).join('');
+    // firstPanel.innerHTML = html;
+    
+    // const html2 = users.map(user => {
+    // if (user.slot === "second") {
+    // return `<li>${user.name}</li>`}
+    // }).join('');
+    // secondPanel.innerHTML = html2;
+    
+    
+    // const html3 = users.map(user => {
+    // if (user.slot === "third") {
+    // return `<li>${user.name}</li>`
+    // }}).join('');
+    // thirdPanel.innerHTML = html2;
+    // } -->
